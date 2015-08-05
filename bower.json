@@ -1,0 +1,24 @@
+{
+  "name": "angular-event-dispatcher",
+  "version": "0.0.0",
+  "homepage": "https://github.com/epayet/angular-event-dispatcher",
+  "authors": [
+    "epayet <jakspinning@gmail.com>"
+  ],
+  "main": "dist/angular-event-dispatcher.js",
+  "description": "Event Dispatcher Service for AngularJS",
+  "keywords": [
+    "angular",
+    "event",
+    "angularjs",
+    "dispatcher"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "tests"
+  ]
+}

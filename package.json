@@ -1,10 +1,11 @@
 {
   "name": "angular-event-dispatcher",
   "version": "0.0.1",
-  "description": "Global Event Dispatcher Service for AngularJS",
+  "description": "Event Dispatcher Service for AngularJS",
   "main": "event.js",
   "scripts": {
-    "test": "node bootstrap-test.js"
+    "test": "node bootstrap-test.js",
+    "build": "babel src --out-file dist/angular-event-dispatcher.js"
   },
   "repository": {
     "type": "git",
