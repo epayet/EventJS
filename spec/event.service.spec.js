@@ -7,7 +7,7 @@ describe('Event', () => {
 
         beforeEach(() => {
             eventService = new EventService();
-            //Logger.setLevel('error');
+            Logger.setLevel('error');
         });
 
         describe('on', () => {
@@ -34,10 +34,10 @@ describe('Event', () => {
             });
         });
 
-        describe('addForwardEvents', () => {
+        describe('forward', () => {
             it('should forward an event', (done) => {
                 eventService.on('to', done);
-                eventService.addForwardEvents('from', 'to');
+                eventService.forward('from', 'to');
                 eventService.trigger('from');
             });
 
@@ -47,8 +47,16 @@ describe('Event', () => {
                     expect(param2).toBe(2);
                     done();
                 });
-                eventService.addForwardEvents('from', 'to');
+                eventService.forward('from', 'to');
                 eventService.trigger('from', 1, 2);
+            });
+        });
+
+        describe('off', () => {
+            it('should delete a listener', () => {
+                eventService.on('test');
+                eventService.off('test');
+                expect(eventService.getListeners('test').length).toBe(0);
             });
         });
     });

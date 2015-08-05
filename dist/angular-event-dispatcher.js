@@ -138,8 +138,8 @@ var EventService = (function () {
             }
         }
     }, {
-        key: 'addForwardEvents',
-        value: function addForwardEvents(eventType, eventToForwardTo) {
+        key: 'addForwardEvent',
+        value: function addForwardEvent(eventType, eventToForwardTo) {
             var self = this;
 
             // Can't use arrow function here, because we need the arguments of the callback function
