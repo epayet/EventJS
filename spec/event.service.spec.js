@@ -1,4 +1,4 @@
-import EventService from './event.service.js';
+import EventService from '../src/event.service.js';
 
 describe('Event', () => {
     describe('Service', () => {

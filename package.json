@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/epayet/EventJS.git"
+    "url": "git+https://github.com/epayet/angular-event-dispatcher.git"
   },
   "keywords": [
     "angular",
@@ -19,7 +19,11 @@
   "author": "epayet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/epayet/EventJS/issues"
+    "url": "https://github.com/epayet/angular-event-dispatcher/issues"
   },
-  "homepage": "https://github.com/epayet/EventJS#readme"
+  "homepage": "https://github.com/epayet/angular-event-dispatcher#readme",
+  "devDependencies": {
+    "jasmine-node": "^2.0.0",
+    "traceur": "0.0.91"
+  }
 }

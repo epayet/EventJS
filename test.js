@@ -1,6 +1,6 @@
 var jasmine = require('jasmine-node');
 jasmine.run({
-    specFolders: ['./'],
+    specFolders: ['./spec'],
     watchFolders: [],
     isVerbose: true,
     showColors: true
