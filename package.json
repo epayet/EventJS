@@ -25,5 +25,8 @@
   "devDependencies": {
     "jasmine-node": "^2.0.0",
     "traceur": "0.0.91"
+  },
+  "dependencies": {
+    "winston": "^1.0.1"
   }
 }

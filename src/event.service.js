@@ -1,101 +1,74 @@
-let listeners = {};
-let eventsRunning = 0;
-let debug = false;
+import Logger from './Logger.js';
 
 class EventService {
-    addEventListener(eventType, callback) {
-        if (!listeners[eventType]) {
-            listeners[eventType] = [];
-        }
-        listeners[eventType].push(callback);
+    constructor() {
+        this.listeners = new Map();
+        this.eventsRunning = 0;
     }
 
-    addEventListeners(events, callback) {
-        for(let event of events) {
-            this.addEventListener(event, callback);
+    on(eventType, callback) {
+        if (!this.listeners.has(eventType)) {
+            this.listeners.set(eventType, []);
         }
+        this.listeners.get(eventType).push(callback);
     }
 
-    triggerEvent(eventType) {
-        var args = [];
+    trigger(eventType) {
+        let args = [];
         for(let i=1; i<arguments.length; i++) {
             args.push(arguments[i]);
         }
 
-        if(debug) {
-            log('event: "' + eventType + '"', args);
-        }
+        this.log('event: "' + eventType + '" called with args:', args);
 
         let nbListeners = 0;
-        if(listeners[eventType]) {
-            nbListeners = listeners[eventType].length;
-            eventsRunning++;
-
-            for (let listener of listeners[eventType]) {
+        if(this.listeners.has(eventType)) {
+            nbListeners = this.listeners.get(eventType).length;
+            this.eventsRunning++;
+            for (let listener of this.listeners.get(eventType)) {
                 listener(...args);
             }
-            eventsRunning--;
+            this.eventsRunning--;
         }
 
-        if(debug) {
-            log('event: "' + eventType + '", dispatched: ' + nbListeners);
-            if(eventsRunning === 0) {
-                console.log("");
-            }
+        this.log('event: "' + eventType + '", called: ' + nbListeners + ' time(s)');
+
+        if(this.eventsRunning === 0) {
+            this.log();
         }
     }
 
-    addForwardEvents (eventType, eventsToForwardTo) {
+    addForwardEvents (eventType, eventToForwardTo) {
         let self = this;
-        let createPushEventCallback = function (eventTypeToForward) {
-            return function () {
-                var newArguments = [];
-                newArguments.push(eventTypeToForward);
-                for (var i = 0; i < arguments.length; i++) {
-                    newArguments.push(arguments[i]);
-                }
-                self.triggerEvent(...newArguments);
-            };
-        };
 
-        for(let eventToForwardTo of eventsToForwardTo) {
-            this.addEventListener(eventType, createPushEventCallback(eventToForwardTo));
-        }
+        // Can't use arrow function here, because we need the arguments of the callback function
+        this.on(eventType, function() {
+            let args = [];
+            for(let i=0; i<arguments.length; i++) {
+                args.push(arguments[i]);
+            }
+
+            self.trigger(eventToForwardTo, ...args)
+        });
     }
 
     getListeners(eventType) {
-        return listeners[eventType];
+        return this.listeners.get(eventType);
     }
 
     resetEvents() {
-        listeners = [];
+        this.listeners = new Map();
     }
 
-    setDebug(value) {
-        debug = value;
-        if(debug) {
-            window.EventService = EventService;
+    log(message='', args=undefined) {
+        var spacesBefore = Logger.createTabs(this.eventsRunning);
+        if(args) {
+            Logger.info(spacesBefore + message, ...args);
+        }
+        else {
+            Logger.info(spacesBefore + message);
         }
     }
-}
-
-function log(message, args) {
-    var spacesBefore = createTabs(eventsRunning);
-    if(args) {
-        console.log(spacesBefore + message, args);
-    }
-    else {
-        console.log(spacesBefore + message);
-    }
-}
-
-function createTabs(nbTabs) {
-    var tabs = "";
-    var spaces = "    ";
-    for(var i=0; i<nbTabs; i++) {
-        tabs += spaces;
-    }
-    return tabs;
 }
 
 export default EventService;
