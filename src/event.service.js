@@ -61,7 +61,7 @@ class EventService {
         this.listeners.set(event, []);
     }
 
-    resetEvents() {
+    reset() {
         this.listeners = new Map();
     }
 

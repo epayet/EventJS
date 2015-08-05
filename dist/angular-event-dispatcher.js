@@ -163,8 +163,8 @@ var EventService = (function () {
             this.listeners.set(event, []);
         }
     }, {
-        key: 'resetEvents',
-        value: function resetEvents() {
+        key: 'reset',
+        value: function reset() {
             this.listeners = new Map();
         }
     }, {
