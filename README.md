@@ -10,6 +10,12 @@ Installation via bower:
 bower install --save angular-event-dispatcher
 ```
 
+Insert the js file in your index.html:
+
+```html
+<script src="bower_components/angular-event-dispatcher/dist/angular-event-dispatcher.js"></script>
+```
+
 Declare it as a dependency of your angular application:
 
 ```javascript
