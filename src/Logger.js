@@ -1,14 +1,15 @@
-import winston from 'winston';
-
-let logger = new (winston.Logger)({
-    transports: [
-        new (winston.transports.Console)()
-    ]
-});
-
 let Logger = {
-    info (message){
-        logger.info(message ? message : '');
+    logLevel: 'info',
+
+    info (){
+        if(this.logLevel == 'info') {
+            let args = [];
+            for(let i=0; i<arguments.length; i++) {
+                args.push(arguments[i]);
+            }
+
+            console.log(...args);
+        }
     },
 
     createTabs (nbTabs) {
@@ -21,7 +22,7 @@ let Logger = {
     },
 
     setLevel(level){
-        logger.transports.console.level = level;
+        this.logLevel = level;
     }
 };
 

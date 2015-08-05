@@ -1,22 +1,21 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _winston = require('winston');
-
-var _winston2 = _interopRequireDefault(_winston);
-
-var logger = new _winston2['default'].Logger({
-    transports: [new _winston2['default'].transports.Console()]
-});
-
 var Logger = {
-    info: function info(message) {
-        logger.info(message ? message : '');
+    logLevel: 'info',
+
+    info: function info() {
+        if (this.logLevel == 'info') {
+            var args = [];
+            for (var i = 0; i < arguments.length; i++) {
+                args.push(arguments[i]);
+            }
+
+            console.log.apply(console, args);
+        }
     },
 
     createTabs: function createTabs(nbTabs) {
@@ -29,12 +28,14 @@ var Logger = {
     },
 
     setLevel: function setLevel(level) {
-        logger.transports.console.level = level;
+        this.logLevel = level;
     }
 };
 
 exports['default'] = Logger;
 module.exports = exports['default'];
+
+},{}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -47,8 +48,10 @@ var _eventServiceJs = require('./event.service.js');
 
 var _eventServiceJs2 = _interopRequireDefault(_eventServiceJs);
 
-exports['default'] = angular.module('jak.event', []).factory('EventService', new _eventServiceJs2['default']());
+exports['default'] = angular.module('angular-event-dispatcher', []).factory('EventService', new _eventServiceJs2['default']());
 module.exports = exports['default'];
+
+},{"./event.service.js":3}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -176,3 +179,5 @@ var EventService = (function () {
 
 exports['default'] = EventService;
 module.exports = exports['default'];
+
+},{"./Logger.js":1}]},{},[2]);

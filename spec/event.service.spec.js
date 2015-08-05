@@ -7,7 +7,7 @@ describe('Event', () => {
 
         beforeEach(() => {
             eventService = new EventService();
-            Logger.setLevel('error');
+            //Logger.setLevel('error');
         });
 
         describe('on', () => {

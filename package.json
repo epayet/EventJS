@@ -5,7 +5,7 @@
   "main": "event.js",
   "scripts": {
     "test": "node bootstrap-test.js",
-    "build": "babel src --out-file dist/angular-event-dispatcher.js"
+    "build": "browserify src/event.js -t babelify --outfile dist/angular-event-dispatcher.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,8 @@
   },
   "homepage": "https://github.com/epayet/angular-event-dispatcher#readme",
   "devDependencies": {
+    "babelify": "^6.1.3",
     "jasmine-node": "^2.0.0",
     "traceur": "0.0.91"
-  },
-  "dependencies": {
-    "winston": "^1.0.1"
   }
 }
