@@ -83,32 +83,32 @@ var EventService = (function () {
 
     _createClass(EventService, [{
         key: 'on',
-        value: function on(eventType, callback) {
-            if (!this.listeners.has(eventType)) {
-                this.listeners.set(eventType, []);
+        value: function on(event, callback) {
+            if (!this.listeners.has(event)) {
+                this.listeners.set(event, []);
             }
-            this.listeners.get(eventType).push(callback);
+            this.listeners.get(event).push(callback);
         }
     }, {
         key: 'trigger',
-        value: function trigger(eventType) {
+        value: function trigger(event) {
             var args = [];
             for (var i = 1; i < arguments.length; i++) {
                 args.push(arguments[i]);
             }
 
-            this.log('event: "' + eventType + '" called with args:', args);
+            this.log('event: "' + event + '" called with args:', args);
 
             var nbListeners = 0;
-            if (this.listeners.has(eventType)) {
-                nbListeners = this.listeners.get(eventType).length;
+            if (this.listeners.has(event)) {
+                nbListeners = this.listeners.get(event).length;
                 this.eventsRunning++;
                 var _iteratorNormalCompletion = true;
                 var _didIteratorError = false;
                 var _iteratorError = undefined;
 
                 try {
-                    for (var _iterator = this.listeners.get(eventType)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    for (var _iterator = this.listeners.get(event)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var listener = _step.value;
 
                         listener.apply(undefined, args);
@@ -131,19 +131,19 @@ var EventService = (function () {
                 this.eventsRunning--;
             }
 
-            this.log('event: "' + eventType + '", called: ' + nbListeners + ' time(s)');
+            this.log('event: "' + event + '", called: ' + nbListeners + ' time(s)');
 
             if (this.eventsRunning === 0) {
                 this.log();
             }
         }
     }, {
-        key: 'addForwardEvent',
-        value: function addForwardEvent(eventType, eventToForwardTo) {
+        key: 'forward',
+        value: function forward(event, eventToForwardTo) {
             var self = this;
 
             // Can't use arrow function here, because we need the arguments of the callback function
-            this.on(eventType, function () {
+            this.on(event, function () {
                 var args = [];
                 for (var i = 0; i < arguments.length; i++) {
                     args.push(arguments[i]);
@@ -154,8 +154,13 @@ var EventService = (function () {
         }
     }, {
         key: 'getListeners',
-        value: function getListeners(eventType) {
-            return this.listeners.get(eventType);
+        value: function getListeners(event) {
+            return this.listeners.get(event);
+        }
+    }, {
+        key: 'off',
+        value: function off(event) {
+            this.listeners.set(event, []);
         }
     }, {
         key: 'resetEvents',
