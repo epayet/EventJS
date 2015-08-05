@@ -1,0 +1,25 @@
+{
+  "name": "angular-event-dispatcher",
+  "version": "0.0.1",
+  "description": "Global Event Dispatcher Service for AngularJS",
+  "main": "event.js",
+  "scripts": {
+    "test": "node bootstrap-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epayet/EventJS.git"
+  },
+  "keywords": [
+    "angular",
+    "event",
+    "angularjs",
+    "dispatcher"
+  ],
+  "author": "epayet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epayet/EventJS/issues"
+  },
+  "homepage": "https://github.com/epayet/EventJS#readme"
+}
