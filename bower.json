@@ -19,6 +19,12 @@
     "node_modules",
     "bower_components",
     "spec",
-    "tests"
-  ]
+    "src",
+    "test.js",
+    "package.json",
+    "bootstrap-test.js"
+  ],
+  "dependencies": {
+    "angular": ">1.3"
+  }
 }

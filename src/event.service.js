@@ -4,6 +4,7 @@ class EventService {
     constructor() {
         this.listeners = new Map();
         this.eventsRunning = 0;
+        this.logger = Logger;
     }
 
     on(eventType, callback) {
