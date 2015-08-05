@@ -78,6 +78,7 @@ var EventService = (function () {
 
         this.listeners = new Map();
         this.eventsRunning = 0;
+        this.logger = _LoggerJs2['default'];
     }
 
     _createClass(EventService, [{
