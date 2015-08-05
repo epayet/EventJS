@@ -14,7 +14,7 @@ var Logger = {
                 args.push(arguments[i]);
             }
 
-            console.log.apply(console, args);
+            console.log.apply(console, ['info:'].concat(args));
         }
     },
 

@@ -8,7 +8,7 @@ let Logger = {
                 args.push(arguments[i]);
             }
 
-            console.log(...args);
+            console.log('info:', ...args);
         }
     },
 

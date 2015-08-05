@@ -80,6 +80,14 @@ Reset every events
 EventService.reset()
 ```
 
+### Change log level
+
+By default, the EventService logs every event. If you want to prevent that, you can change the log level (value 'info' by default):
+
+```javascript
+EventService.logger.logLevel = "error";
+```
+
 ## Contributing
 
 Pull requests are welcome! The library is written in ES6, then transpiled to ES5. Install dev dependencies first: `npm install`
