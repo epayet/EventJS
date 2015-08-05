@@ -48,7 +48,9 @@ var _eventServiceJs = require('./event.service.js');
 
 var _eventServiceJs2 = _interopRequireDefault(_eventServiceJs);
 
-exports['default'] = angular.module('angular-event-dispatcher', []).factory('EventService', new _eventServiceJs2['default']());
+exports['default'] = angular.module('angular-event-dispatcher', []).factory('EventService', function () {
+    return new _eventServiceJs2['default']();
+});
 module.exports = exports['default'];
 
 },{"./event.service.js":3}],3:[function(require,module,exports){
