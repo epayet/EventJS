@@ -72,12 +72,12 @@ Delete an event
 EventListener.off('foo');   // Delete every 'foo' listeners
 ```
 
-### reset
+### reset()
 
 Reset every events
 
 ```javascript
-EventService.reset()
+EventService.reset();
 ```
 
 ### Change log level
