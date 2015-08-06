@@ -1,6 +1,6 @@
 {
   "name": "angular-event-dispatcher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homepage": "https://github.com/epayet/angular-event-dispatcher",
   "authors": [
     "epayet <jakspinning@gmail.com>"
@@ -22,7 +22,8 @@
     "src",
     "test.js",
     "package.json",
-    "bootstrap-test.js"
+    "bootstrap-test.js",
+    "build.js"
   ],
   "dependencies": {
     "angular": ">1.3"
