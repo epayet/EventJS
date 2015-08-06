@@ -29,12 +29,12 @@ angular.module('myApp', [
 ```javascript
 angular.module('myApp', [
     'angular-event-dispatcher'
-]).run(function(EventService) {
-    EventService.on('foo', function (arg1) {
+]).run(function(EventDispatcher) {
+    EventDispatcher.on('foo', function (arg1) {
         console.log(arg1);  // Will log 'bar'
     });
 
-    EventService.trigger('foo', 'bar');
+    EventDispatcher.trigger('foo', 'bar');
 });
 ```
 
@@ -45,7 +45,7 @@ angular.module('myApp', [
 Declare an event listener
 
 ```javascript
-EventService.on('foo', function (arg1) {
+EventDispatcher.on('foo', function (arg1) {
     console.log(arg1);
 });
 ```
@@ -55,7 +55,7 @@ EventService.on('foo', function (arg1) {
 Trigger an event
 
 ```javascript
-EventService.trigger('foo', 'bar');
+EventDispatcher.trigger('foo', 'bar');
 ```
 
 ### forward(eventName, eventNameToForwardTo)
@@ -63,11 +63,11 @@ EventService.trigger('foo', 'bar');
 Forward an event to another
 
 ```javascript
-EventService.on('foo', function(arg1) {
+EventDispatcher.on('foo', function(arg1) {
     console.log(arg1);  // Will log 'test'
 });
-EventService.forward('bar', 'foo');
-EventService.trigger('bar', 'test');    // Will trigger foo event and log 'test'
+EventDispatcher.forward('bar', 'foo');
+EventDispatcher.trigger('bar', 'test');    // Will trigger foo event and log 'test'
 ```
 
 ### off(eventName)
@@ -83,15 +83,15 @@ EventListener.off('foo');   // Delete every 'foo' listeners
 Reset every events
 
 ```javascript
-EventService.reset();
+EventDispatcher.reset();
 ```
 
 ### Change log level
 
-By default, the EventService logs every event. If you want to prevent that, you can change the log level (value 'info' by default):
+By default, the EventDispatcher logs every event. If you want to prevent that, you can change the log level (value 'info' by default):
 
 ```javascript
-EventService.logger.logLevel = "error";
+EventDispatcher.logger.logLevel = "error";
 ```
 
 ## Contributing

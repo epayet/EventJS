@@ -5,7 +5,7 @@
   "main": "event.js",
   "scripts": {
     "test": "node bootstrap-test.js",
-    "build": "browserify src/event.js -t babelify --outfile dist/angular-event-dispatcher.js"
+    "build": "browserify src/angular-event-dispatcher.js -t babelify --outfile dist/angular-event-dispatcher.js"
   },
   "repository": {
     "type": "git",

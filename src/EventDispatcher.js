@@ -1,6 +1,6 @@
 import Logger from './Logger.js';
 
-class EventService {
+class EventDispatcher {
     constructor() {
         this.listeners = new Map();
         this.eventsRunning = 0;
@@ -76,4 +76,4 @@ class EventService {
     }
 }
 
-export default EventService;
+export default EventDispatcher;
