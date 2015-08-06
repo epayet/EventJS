@@ -106,11 +106,9 @@ Tests are written in jasmine. You need node.js installed to run the tests.
 
 ### Build
 
-Browserify with babelify is used (`npm install -g browserify`).
+There is a simple build script (`build.js`). To build launch the command:
 
-`npm run build` which launches: 
-
-`browserify src/event.js -t babelify --outfile dist/angular-event-dispatcher.js`
+`npm run build` which launches: `node build.js`
 
 ## License
 
