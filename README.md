@@ -6,7 +6,7 @@ Simple Event Dispatcher Service for AngularJS.
 
 Installation via bower:
 
-```
+``` bash
 bower install --save angular-event-dispatcher
 ```
 
